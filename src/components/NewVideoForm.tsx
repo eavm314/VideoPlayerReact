@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { addVideo } from '../services/videosService';
-import VideoInterface from '../models/VideoInterface';
 import { generateID } from '../helpers/ids';
 
 export const NewVideoForm = ({ setVideos }) => {
