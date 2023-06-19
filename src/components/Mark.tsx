@@ -11,8 +11,8 @@ export const Mark = ({mark, index}) => {
     ref.current.seekTo(timeMark);
   };
 
-  const deleteMark = (index:number) => {
-    dispatch({type: types.deleteMark, payload: index});
+  const deleteMark = (markToDelete:number) => {
+    dispatch({type: types.deleteMark, payload: markToDelete});
   };
   
   return (
@@ -24,7 +24,7 @@ export const Mark = ({mark, index}) => {
         {format(mark)}
       </button>
       <button className="hover:text-red-600"
-        onClick={() => deleteMark(index)}
+        onClick={() => deleteMark(mark)}
       >
         <IconTrash />
       </button>

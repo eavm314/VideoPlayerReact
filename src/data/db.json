@@ -1,64 +1,13 @@
 {
   "videos": [
     {
-      "id": "video-0",
-      "url": "https://www.youtube.com/watch?v=oCqIr1v7t7Q",
-      "marks": [
-        10,
-        20,
-        30,
-        40,
-        4,
-        0,
-        2
-      ]
-    },
-    {
-      "id": "video-1",
-      "url": "https://www.youtube.com/watch?v=kjSMXuJbeOY",
-      "marks": [
-        50,
-        3,
-        2
-      ]
-    },
-    {
-      "id": "video-2",
-      "url": "https://www.youtube.com/watch?v=duC60gX8OCU",
-      "marks": [
-        90,
-        2,
-        98,
-        23,
-        122,
-        123,
-        124,
-        125
-      ]
-    },
-    {
-      "id": "video-3",
-      "url": "https://www.youtube.com/watch?v=gOnw6uYs5ag",
-      "marks": [
-        7,
-        8,
-        28,
-        2
-      ]
-    },
-    {
-      "name": "spiderman",
-      "url": "https://www.youtube.com/watch?v=M_uwuIMYJ54",
-      "id": "a01947b0",
-      "marks": []
-    },
-    {
       "name": "animator",
       "url": "https://www.youtube.com/watch?v=lhikdD6Hf2M",
       "id": "7f3c6863",
       "marks": [
-        5,
-        8
+        3,
+        4,
+        5
       ]
     },
     {
@@ -68,12 +17,6 @@
       "marks": [
         7
       ]
-    },
-    {
-      "name": "Aleluya",
-      "url": "https://www.youtube.com/watch?v=8jLOx1",
-      "id": "6c1270f1",
-      "marks": []
     }
   ]
 }

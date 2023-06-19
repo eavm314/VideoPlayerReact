@@ -9,6 +9,10 @@ export const addVideo = async (video:VideoInterface) => {
   return await API.post("/videos", video);
 };
 
+export const deleteVideoById = async (id:string) => {
+  return await API.delete(`/videos/${id}`);
+};
+
 export const getVideoById = async (id:string) => {
   return await API.get(`/videos/${id}`);
 }
