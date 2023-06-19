@@ -7,7 +7,7 @@ import AppLayout from './pages/AppLayout';
 import LibraryPage from './pages/LibraryPage';
 import VideoPage from './pages/VideoPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { videos } from './models/SavedVideos';
+import { getVideoById, getVideos } from './services/videosService';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +21,9 @@ const router = createBrowserRouter([
       {
         path: "library",
         element: <LibraryPage />,
+        loader: async () => {
+          return getVideos();
+        },
       },
       {
         path: "video/:videoId?",
@@ -28,9 +31,9 @@ const router = createBrowserRouter([
         loader: async ({params}) => {
           const { videoId } = params;
           if (!videoId){
-            return {}
+            return {};
           }
-          return videos[Number(videoId)];
+          return getVideoById(videoId);
         },
       },
     ]

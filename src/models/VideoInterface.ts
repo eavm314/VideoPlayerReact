@@ -1,8 +1,8 @@
-interface Video {
+interface VideoInterface {
     id: string,
     name?: string,
     url: string,
     marks: number[],
 }
 
-export default Video;
+export default VideoInterface;

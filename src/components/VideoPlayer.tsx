@@ -44,7 +44,8 @@ export const VideoPlayer = () => {
           setTimeElapsed(state.playedSeconds)
           console.log("progress..")
         }}
-        
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
       />
 
       <button onClick={handlePlaying}>

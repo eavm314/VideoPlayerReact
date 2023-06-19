@@ -1,11 +1,12 @@
 import ReactPlayer from "react-player"
-import { videos } from "../models/SavedVideos"
-import Video from "../models/VideoInterface";
-import { useNavigate } from "react-router-dom";
+import VideoInterface from "../models/VideoInterface";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const LibraryPage = () => {
+  const { data: videos } = useLoaderData();
+
   const navigate = useNavigate();
-  const watchVideo = (video:Video) => {
+  const watchVideo = (video:VideoInterface) => {
     console.log("video:",video.id);
     navigate(`/app/video/${video.id}`)
   }
@@ -14,8 +15,9 @@ const LibraryPage = () => {
       LibraryPage
       <div>
         {
-          videos.map((video) => 
-            <button onClick={() => watchVideo(video)}>
+          videos.map((video:VideoInterface) => 
+            <button key={video.id}
+              onClick={() => watchVideo(video)}>
               <ReactPlayer 
                 url={video.url}
                 light
