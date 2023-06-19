@@ -1,32 +1,23 @@
-import ReactPlayer from "react-player"
 import VideoInterface from "../models/VideoInterface";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { AxiosResponse } from "axios";
+import { VideoCard } from "../components/VideoCard";
+import { NewVideoForm } from "../components/NewVideoForm";
+import { useState } from "react";
 
 const LibraryPage = () => {
-  const { data: videos } = useLoaderData();
-
-  const navigate = useNavigate();
-  const watchVideo = (video:VideoInterface) => {
-    console.log("video:",video.id);
-    navigate(`/app/video/${video.id}`)
-  }
+  const { data } = useLoaderData() as AxiosResponse<VideoInterface[]>;
+  const [videos, setVideos] = useState(data);
   return (
     <div>
-      LibraryPage
       <div>
         {
           videos.map((video:VideoInterface) => 
-            <button key={video.id}
-              onClick={() => watchVideo(video)}>
-              <ReactPlayer 
-                url={video.url}
-                light
-                playIcon={<></>}
-              />
-            </button>
+            <VideoCard key={video.id} video={video}/>
           )
         }
       </div>
+      <NewVideoForm setVideos={setVideos}/>
     </div>
   )
 }

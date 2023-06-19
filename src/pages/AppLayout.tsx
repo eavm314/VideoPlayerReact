@@ -10,7 +10,7 @@ export default function AppLayout() {
   return (
     <div>
       <NavBar/>
-      <div>
+      <div className='m-5'>
         <Outlet/>
       </div>
     </div>
