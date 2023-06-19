@@ -33,8 +33,11 @@ const storeReducer = (state, action) => {
 
     case types.deleteMark:
       console.log("deleting...");
+      const newMarks = [...state.marks];
+      newMarks.splice(action.payload,1);
       return {
         ...state,
+        marks: newMarks,
       }
 
     default:

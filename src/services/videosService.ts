@@ -13,6 +13,6 @@ export const getVideoById = async (id:string) => {
   return await API.get(`/videos/${id}`);
 }
  
-export const addMark = async (id:string, mark: number) => {
-  return await API.post(`/videos/${id}/marks`, mark);
+export const updateMarks = async (id:string, updatedMarks: number[]) => {
+  return await API.patch(`/videos/${id}`, {marks: updatedMarks});
 };
