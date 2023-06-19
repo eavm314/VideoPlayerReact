@@ -3,9 +3,9 @@ import storeReducer, { initialValues } from "./storeReducer";
 
 const StoreContext = createContext(null);
 
-const StoreProvider = ({ children }) => {
+const StoreProvider = ({ children, selectedVideo }) => {
   return (
-    <StoreContext.Provider value={useReducer(storeReducer, initialValues)}>
+    <StoreContext.Provider value={useReducer(storeReducer, selectedVideo)}>
       {children}
     </StoreContext.Provider>
   )

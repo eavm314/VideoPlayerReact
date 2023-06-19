@@ -1,14 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ReactPlayer from "react-player"
-import Video from "../models/VideoInterface"
-import example from "../assets/example.mp4"
+import { useDispatch, useStore } from "../store/ContextProvider";
+import { types } from "../store/storeReducer";
 
-export const VideoPlayer = ({ url, setMarks, videoRef }) => {
-  // console.log("renderizando video...")
-
+export const VideoPlayer = () => {
   const [playing, setPlaying] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
+
+  const videoRef = useRef(); 
+  const dispatch = useDispatch();
+  const {url} = useStore();
+  
+  useEffect(() => {
+    dispatch({type: types.addRef, payload: videoRef})
+  },[]);
 
   const handleDuration = (duration: number) => {
     console.log('onDuration', duration)
@@ -22,7 +28,8 @@ export const VideoPlayer = ({ url, setMarks, videoRef }) => {
 
   const saveMark = () => {
     console.log("save mark at:", timeElapsed.toFixed());
-    setMarks((marks) => [...marks, Number(timeElapsed.toFixed())]);
+    dispatch({type: types.addMark, payload: Number(timeElapsed.toFixed())})
+    // setMarks((marks) => [...marks, Number(timeElapsed.toFixed())]);
     
   };
 
@@ -44,9 +51,9 @@ export const VideoPlayer = ({ url, setMarks, videoRef }) => {
         {playing? "Pause":"Play"}
       </button>
 
-      <button onClick={saveMark}>
+      {<button onClick={saveMark}>
         Marcar
-      </button>
+      </button>}
     </div>
   )
 }

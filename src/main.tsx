@@ -7,6 +7,7 @@ import AppLayout from './pages/AppLayout';
 import LibraryPage from './pages/LibraryPage';
 import VideoPage from './pages/VideoPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { videos } from './models/SavedVideos';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,13 @@ const router = createBrowserRouter([
       {
         path: "video/:videoId?",
         element: <VideoPage />,
+        loader: async ({params}) => {
+          const { videoId } = params;
+          if (!videoId){
+            return {}
+          }
+          return videos[Number(videoId)];
+        },
       },
     ]
   },

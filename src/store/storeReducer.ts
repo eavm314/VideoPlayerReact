@@ -5,16 +5,6 @@ const types = {
   changeVideo: "change-video"
 };
 
-const initialValues = {
-  url: "https://www.youtube.com/watch?v=oCqIr1v7t7Q",
-  marks: [
-    500,
-    2,
-    98,
-    23,
-  ],
-};
-
 const storeReducer = (state, action) => {
   switch (action.type) {
     case types.addRef:
@@ -52,6 +42,6 @@ const storeReducer = (state, action) => {
   }
 };
 
-export { initialValues, types };
+export { types };
 
 export default storeReducer;

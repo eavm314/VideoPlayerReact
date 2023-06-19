@@ -1,9 +1,12 @@
 import format from "../helpers/durationFormat"
+import { useStore } from "../store/ContextProvider";
 
-export const VideoMarks = ({ marks, videoRef }) => {
+export const VideoMarks = () => {
+
+  const {ref, marks} = useStore();
   
   const goToMark = (timeMark:number) => {
-    videoRef.current.seekTo(timeMark);
+    ref.current.seekTo(timeMark);
   };
 
   return (
