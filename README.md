@@ -19,3 +19,6 @@ Lista de requisitos para el proyecto:
 7. Implementar una interfaz de usuario intuitiva y atractiva, utilizando TailwindCSS para estilizar los componentes.
 
 8. Utilizar `json-server` para almacenar los videos guardados por el usuario y los marcadores de tiempo de cada video.
+
+## Video
+[Click aquí](https://drive.google.com/drive/folders/1Xzbvdc9Xp50pyyx3FO1JyNbla1OfXBmW?usp=sharing)
