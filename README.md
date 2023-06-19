@@ -1,5 +1,7 @@
 # My Video Player
 
+Aplicación Web de reprducción de video, con una biblioteca para guardar multiples videos de plataformas como Facebook, Youtube, Twitch, etc.
+
 Lista de requisitos para el proyecto:
 
 1. Implementar una interfaz de usuario que muestre un reproductor de video con controles de reproducción, pausa y marcadores de tiempo.
@@ -16,6 +18,4 @@ Lista de requisitos para el proyecto:
 
 7. Implementar una interfaz de usuario intuitiva y atractiva, utilizando TailwindCSS para estilizar los componentes.
 
-8. Optimizar el rendimiento de los componentes utilizando `memo` y `useMemo` cuando sea necesario, para evitar renderizados innecesarios.
-
-9. Utilizar `json-server` para almacenar los videos guardados por el usuario y los marcadores de tiempo de cada video.
+8. Utilizar `json-server` para almacenar los videos guardados por el usuario y los marcadores de tiempo de cada video.
