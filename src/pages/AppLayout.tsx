@@ -8,7 +8,7 @@ const navItems = ['Home', 'About', 'Contact'];
 export default function AppLayout() {
 
   return (
-    <div>
+    <div className='h-screen'>
       <NavBar/>
       <div className='m-5'>
         <Outlet/>

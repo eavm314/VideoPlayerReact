@@ -4,7 +4,7 @@ import VideoInterface from '../models/VideoInterface';
 import { generateID } from '../helpers/ids';
 
 export const NewVideoForm = ({ setVideos }) => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const handleFormSubmit = (data) => {
     console.log("agregando...", data);
@@ -16,6 +16,7 @@ export const NewVideoForm = ({ setVideos }) => {
     setVideos((videos) => [...videos, newVideo]);
     addVideo(newVideo);
     // onSubmit(data);
+    reset();
   };
 
   return (
@@ -27,15 +28,14 @@ export const NewVideoForm = ({ setVideos }) => {
         <div className='my-2'>
           <label htmlFor="name">Nombre del video:</label>
           <input className='w-full px-2'
-            type="text" id="name" {...register('name', { required: true })} />
-          {errors.name && <span>Este campo es obligatorio</span>}
+            type="text" id="name" {...register('name')} />
         </div>
 
         <div className='my-2'>
           <label htmlFor="url">URL del video:</label>
+          {errors.url && <span className='text-red-700 text-md ml-6'>*Ingresa una URL válida</span>}
           <input className='w-full px-2'
             type="text" id="url" {...register('url', { required: true, pattern: /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/i })} />
-          {errors.url && <span>Ingresa una URL válida</span>}
         </div>
 
         <button 
