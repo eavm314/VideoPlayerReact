@@ -6,12 +6,11 @@ import { useLoaderData } from "react-router-dom";
 import { AxiosResponse } from "axios";
 
 const VideoPage = () => {
-
   const {data: video} = useLoaderData() as AxiosResponse<VideoInterface>;
 
   return (
     <StoreProvider selectedVideo={video}>
-      <div>
+      <div className="flex">
         <VideoPlayer />
         <VideoMarks />
       </div>

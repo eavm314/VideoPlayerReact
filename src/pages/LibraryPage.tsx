@@ -9,15 +9,15 @@ const LibraryPage = () => {
   const { data } = useLoaderData() as AxiosResponse<VideoInterface[]>;
   const [videos, setVideos] = useState(data);
   return (
-    <div>
-      <div>
-        {
-          videos.map((video:VideoInterface) => 
-            <VideoCard key={video.id} video={video}/>
-          )
-        }
-      </div>
-      <NewVideoForm setVideos={setVideos}/>
+    <div className="flex flex-wrap justify-evenly">
+
+      {
+        videos.map((video: VideoInterface) =>
+          <VideoCard key={video.id} video={video} />
+        )
+      }
+
+      <NewVideoForm setVideos={setVideos} />
     </div>
   )
 }

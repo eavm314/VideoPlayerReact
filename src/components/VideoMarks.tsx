@@ -1,43 +1,16 @@
-import { useEffect } from "react";
-import format from "../helpers/durationFormat"
-import { updateMarks } from "../services/videosService";
-import { useDispatch, useStore } from "../store/ContextProvider";
-import { types } from "../store/storeReducer";
+import { Mark } from "./Mark";
+import { useStore } from "../store/ContextProvider";
 
 export const VideoMarks = () => {
 
-  const dispatch = useDispatch();
-  const {ref, marks, id} = useStore();
-  
-  const goToMark = (timeMark:number) => {
-    ref.current.seekTo(timeMark);
-  };
-
-  const deleteMark = (index:number) => {
-    dispatch({type: types.deleteMark, payload: index});
-  };
-  
-  useEffect(() => {
-    updateMarks(id, marks)
-  }, [marks])
-  
+  const { marks } = useStore();
 
   return (
-    <div className="flex flex-col">
+    <div className="ml-5">
+      <h1 className="text-3xl mb-5 font-bold">Marcadores: </h1>
       {
-        marks.map((mark, i) => 
-        <div>
-          <button key={i}
-            className="w-20"
-            onClick={() => goToMark(mark)}>
-            {format(mark)}
-          </button>
-          <button
-            onClick={() => deleteMark(i)}
-          >
-            e
-          </button>
-        </div>
+        marks.map((mark, i) =>
+          <Mark mark={mark} index={i} />
         )}
     </div>
   )

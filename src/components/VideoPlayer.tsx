@@ -5,6 +5,7 @@ import { useDispatch, useStore } from "../store/ContextProvider";
 import { types } from "../store/storeReducer";
 import { updateMarks } from "../services/videosService";
 import VideoInterface from "../models/VideoInterface";
+import { VideoControls } from "./VideoControls";
 
 export const VideoPlayer = () => {
   console.log("renderizando video...");
@@ -29,6 +30,7 @@ export const VideoPlayer = () => {
   };
 
   const saveMark = () => {
+    console.log("click");
     const newMark = Number(timeElapsed.toFixed());
     if (marks.includes(newMark))
       return;
@@ -38,7 +40,7 @@ export const VideoPlayer = () => {
   };
 
   return (
-    <div>
+    <div className="w-3/4 max-w-3xl">
       <ReactPlayer
         ref={videoRef}
         url={url}
@@ -46,15 +48,14 @@ export const VideoPlayer = () => {
         onProgress={(state) => setTimeElapsed(state.playedSeconds)}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
+        width="100%"
       />
 
-      <button onClick={handlePlaying}>
-        {playing ? "Pause" : "Play"}
-      </button>
-
-      {<button onClick={saveMark}>
-        Marcar
-      </button>}
+      <VideoControls 
+        handlePlaying={handlePlaying}
+        saveMark={saveMark}
+        playing={playing}
+      />
     </div>
   )
 }

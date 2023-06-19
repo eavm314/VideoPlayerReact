@@ -3,11 +3,11 @@ import { addVideo } from '../services/videosService';
 import VideoInterface from '../models/VideoInterface';
 import { generateID } from '../helpers/ids';
 
-export const NewVideoForm = ({setVideos}) => {
+export const NewVideoForm = ({ setVideos }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleFormSubmit = (data) => {
-    console.log("agregando...",data);
+    console.log("agregando...", data);
     const newVideo = {
       ...data,
       id: generateID(),
@@ -19,20 +19,31 @@ export const NewVideoForm = ({setVideos}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <div>
-        <label htmlFor="name">Nombre del video:</label>
-        <input type="text" id="name" {...register('name', { required: true })} />
-        {errors.name && <span>Este campo es obligatorio</span>}
-      </div>
+    <div className="w-96 h-56 my-2 py-3 px-5 bg-cyan-500">
+      <h1 className='text-xl font-bold mb-2'>
+        Agregar Nuevo Video
+      </h1>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <div className='my-2'>
+          <label htmlFor="name">Nombre del video:</label>
+          <input className='w-full px-2'
+            type="text" id="name" {...register('name', { required: true })} />
+          {errors.name && <span>Este campo es obligatorio</span>}
+        </div>
 
-      <div>
-        <label htmlFor="url">URL del video:</label>
-        <input type="text" id="url" {...register('url', { required: true, pattern: /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/i })} />
-        {errors.url && <span>Ingresa una URL válida</span>}
-      </div>
+        <div className='my-2'>
+          <label htmlFor="url">URL del video:</label>
+          <input className='w-full px-2'
+            type="text" id="url" {...register('url', { required: true, pattern: /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/i })} />
+          {errors.url && <span>Ingresa una URL válida</span>}
+        </div>
 
-      <button type="submit">Agregar Video</button>
-    </form>
+        <button 
+          className='bg-cyan-300 py-1 px-3 mt-3'
+          type="submit">
+          Agregar Video
+        </button>
+      </form>
+    </div>
   );
 }

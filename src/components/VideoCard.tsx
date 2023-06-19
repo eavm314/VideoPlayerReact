@@ -9,13 +9,18 @@ export const VideoCard = ({video}) => {
     navigate(`/app/video/${video.id}`)
   }
   return (
-    <button
-      onClick={() => watchVideo(video)}>
-      <ReactPlayer
-        url={video.url}
-        light
-        playIcon={<></>}
-      />
-    </button>
+    <div className="w-96 my-2">
+      <button className="w-full h-56"
+        onClick={() => watchVideo(video)}>
+        <ReactPlayer
+          url={video.url}
+          light
+          playIcon={<></>}
+          width="100%"
+          height="100%"
+        />
+      </button>
+      <p className="text-lg font-bold">{video.name? video.name: "Untitled"}</p>
+    </div>
   )
 }
