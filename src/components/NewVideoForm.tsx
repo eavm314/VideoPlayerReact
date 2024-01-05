@@ -1,20 +1,26 @@
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { addVideo } from '../services/videosService';
 import { generateID } from '../helpers/ids';
+import { Dispatch, SetStateAction } from 'react';
+import VideoInterface from '../models/VideoInterface';
+import { INewVideoForm } from '../models/NewVideoForm';
 
-export const NewVideoForm = ({ setVideos }) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+interface Props {
+  setVideos: Dispatch<SetStateAction<VideoInterface[]>>
+}
 
-  const handleFormSubmit = (data) => {
-    console.log("agregando...", data);
-    const newVideo = {
+export const NewVideoForm = ({ setVideos }: Props) => {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<INewVideoForm>();
+
+  const handleFormSubmit: SubmitHandler<INewVideoForm> = (data) => {
+    const newVideo: VideoInterface = {
       ...data,
       id: generateID(),
       marks: []
     }
     setVideos((videos) => [...videos, newVideo]);
     addVideo(newVideo);
-    // onSubmit(data);
+
     reset();
   };
 
@@ -33,7 +39,7 @@ export const NewVideoForm = ({ setVideos }) => {
         <div className='my-2'>
           <label htmlFor="url">URL del video:</label>
           {errors.url && <span className='text-red-700 text-md ml-6'>*Ingresa una URL válida</span>}
-          <input className='w-full px-2'
+          <input className='w-full px-2' placeholder='Youtube, Facebook, Twitch'
             type="text" id="url" {...register('url', { required: true, pattern: /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/i })} />
         </div>
 

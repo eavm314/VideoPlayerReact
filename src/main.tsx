@@ -6,10 +6,14 @@ import HomePage from './pages/HomePage';
 import AppLayout from './pages/AppLayout';
 import LibraryPage from './pages/LibraryPage';
 import VideoPage from './pages/VideoPage';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import { getVideoById, getVideos } from './services/videosService';
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/home" />,
+  },
   {
     path: "/home",
     element: <HomePage />,

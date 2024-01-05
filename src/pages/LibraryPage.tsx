@@ -1,9 +1,9 @@
-import VideoInterface from "../models/VideoInterface";
-import { useLoaderData, useNavigate } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { VideoCard } from "../components/VideoCard";
-import { NewVideoForm } from "../components/NewVideoForm";
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import { NewVideoForm } from "../components/NewVideoForm";
+import { VideoCard } from "../components/VideoCard";
+import VideoInterface from "../models/VideoInterface";
 import { deleteVideoById } from "../services/videosService";
 
 const LibraryPage = () => {
@@ -11,8 +11,8 @@ const LibraryPage = () => {
   const [videos, setVideos] = useState(data);
   
   const deleteVideo = (id:string) => {
-    setVideos(videos.filter((v) => v.id!=id))
     deleteVideoById(id);
+    setVideos(videos.filter((v) => v.id!=id))
   };
 
   return (
