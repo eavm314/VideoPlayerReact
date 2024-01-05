@@ -1,13 +1,12 @@
 import ReactPlayer from "react-player"
 import { useNavigate } from "react-router-dom";
 import VideoInterface from "../models/VideoInterface";
-import { IconTrash } from "@tabler/icons-react";
+import { IconPencil, IconTrash } from "@tabler/icons-react";
 
-export const VideoCard = ({video, deleteVideo}) => {
+export const VideoCard = ({ video, deleteVideo, renameVideo }) => {
   const navigate = useNavigate();
 
-  const watchVideo = (video:VideoInterface) => {
-    console.log("video:",video.id);
+  const watchVideo = (video: VideoInterface) => {
     navigate(`/app/video/${video.id}`)
   };
 
@@ -24,7 +23,17 @@ export const VideoCard = ({video, deleteVideo}) => {
         />
       </button>
       <div className="flex">
-        <p className="text-lg font-bold">{video.name? video.name: "Untitled"}</p>
+        <p className="text-lg font-bold">{video.name ? video.name : "Untitled"}</p>
+        <button onClick={() => {
+          const result = prompt("Ingresa el nuevo nombre de tu video:", video.name);
+          if (result){
+            renameVideo(video.id, result);
+          }
+        }}
+          className="ml-2 invisible 
+          group-hover:visible hover:text-red-600">
+          <IconPencil />
+        </button>
         <button onClick={() => deleteVideo(video.id)}
           className="ml-auto invisible 
           group-hover:visible hover:text-red-600">

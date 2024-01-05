@@ -9,6 +9,7 @@ const VideoPage = () => {
 
   return (
     <StoreProvider selectedVideo={video}>
+      <h1 className="text-4xl font-bold mb-3">{video.name}</h1>
       <div className="flex">
         <VideoPlayer />
         <VideoMarks />

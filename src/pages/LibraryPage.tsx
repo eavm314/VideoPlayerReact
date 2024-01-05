@@ -3,15 +3,20 @@ import { useLoaderData } from "react-router-dom";
 import { NewVideoForm } from "../components/NewVideoForm";
 import { VideoCard } from "../components/VideoCard";
 import VideoInterface from "../models/VideoInterface";
-import { deleteVideoById } from "../services/videosService";
+import { deleteVideoById, getVideos, updateName } from "../services/videosService";
 
 const LibraryPage = () => {
   const data = useLoaderData() as VideoInterface[];
   const [videos, setVideos] = useState(data);
-  
-  const deleteVideo = (id:string) => {
+
+  const deleteVideo = (id: string) => {
     deleteVideoById(id);
-    setVideos(videos.filter((v) => v.id!=id))
+    setVideos(videos.filter((v) => v.id != id))
+  };
+
+  const renameVideo = (id: string, name: string) => {
+    updateName(id, name);
+    setVideos(getVideos())
   };
 
   return (
@@ -19,7 +24,10 @@ const LibraryPage = () => {
 
       {
         videos.map((video: VideoInterface) =>
-          <VideoCard key={video.id} video={video} deleteVideo={deleteVideo}/>
+          <VideoCard key={video.id} 
+            video={video} 
+            deleteVideo={deleteVideo} 
+            renameVideo={renameVideo} />
         )
       }
 
