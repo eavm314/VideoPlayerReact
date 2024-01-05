@@ -3,7 +3,12 @@ import format from "../helpers/durationFormat";
 import { useDispatch, useStore } from "../store/ContextProvider";
 import { types } from "../store/storeReducer";
 
-export const Mark = ({mark, index}) => {
+interface Props {
+  mark: number;
+  index: number;
+}
+
+export const Mark = ({mark, index}: Props) => {
   const dispatch = useDispatch();
   const {ref} = useStore();
 

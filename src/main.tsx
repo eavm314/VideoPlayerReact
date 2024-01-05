@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 
-import HomePage from './pages/HomePage';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import AppLayout from './pages/AppLayout';
+import HomePage from './pages/HomePage';
 import LibraryPage from './pages/LibraryPage';
 import VideoPage from './pages/VideoPage';
-import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import { getVideoById, getVideos } from './services/videosService';
 
 const router = createBrowserRouter([
@@ -32,9 +32,9 @@ const router = createBrowserRouter([
       {
         path: "video/:videoId?",
         element: <VideoPage />,
-        loader: async ({params}) => {
+        loader: async ({ params }) => {
           const { videoId } = params;
-          if (!videoId){
+          if (!videoId) {
             return {};
           }
           return getVideoById(videoId);
@@ -46,6 +46,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

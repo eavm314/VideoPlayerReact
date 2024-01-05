@@ -1,5 +1,6 @@
+import { IconBrandGithubCopilot, IconBrandGithubFilled } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import preview from "../assets/videoPlayerPreview.png"
+import preview from "../assets/videoPlayerPreview.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -25,9 +26,9 @@ const HomePage = () => {
               <h3 className="text-2xl font-bold mb-2">Funcionalidades</h3>
               <ul className="list-disc list-inside text-gray-700">
                 <li>Reproducción fluida de videos de alta calidad.</li>
-                <li>Explora una amplia biblioteca de videos.</li>
-                <li>Crea listas de reproducción personalizadas.</li>
+                <li>Crea una amplia biblioteca de videos de Youtube, Facebook y Twitch.</li>
                 <li>Guarda tus videos favoritos para verlos más tarde.</li>
+                <li>Agrega marcadores para regresar a tus momentos favoritos en cualquier momento.</li>
                 <li>Control de reproducción: pausa, avance rápido, retroceso, etc.</li>
               </ul>
             </div>
@@ -41,9 +42,8 @@ const HomePage = () => {
               <ul className="list-disc list-inside text-gray-700">
                 <li>Acceso instantáneo a una amplia variedad de contenido de video.</li>
                 <li>Interfaz de usuario intuitiva y fácil de usar.</li>
-                <li>Reproducción sin interrupciones y alta calidad de video.</li>
-                <li>Posibilidad de personalizar listas de reproducción según tus preferencias.</li>
-                <li>Guarda y organiza tus videos favoritos para verlos en cualquier momento.</li>
+                <li>Reproducción sin interrupciones.</li>
+                <li>Accede a tus videos favoritos rápidamente.</li>
               </ul>
             </div>
             <div className="md:w-1/2 grid max-md:mt-10">
@@ -56,7 +56,16 @@ const HomePage = () => {
         </section>
 
       </main>
-
+      <hr className="h-1 bg-slate-300"/>
+      <footer className="flex justify-center text-slate-800">
+        <a 
+          href="https://github.com/eavm314/VideoPlayerReact"
+          target="_blank"
+          className="border-2 border-slate-600 rounded my-5 flex p-1">
+          <IconBrandGithubFilled />
+          <h3 className="my-auto mx-2">Github Repository</h3>
+        </a>
+      </footer>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { AxiosResponse } from "axios";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { NewVideoForm } from "../components/NewVideoForm";
@@ -7,7 +6,7 @@ import VideoInterface from "../models/VideoInterface";
 import { deleteVideoById } from "../services/videosService";
 
 const LibraryPage = () => {
-  const { data } = useLoaderData() as AxiosResponse<VideoInterface[]>;
+  const data = useLoaderData() as VideoInterface[];
   const [videos, setVideos] = useState(data);
   
   const deleteVideo = (id:string) => {

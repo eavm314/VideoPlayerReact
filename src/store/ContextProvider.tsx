@@ -1,9 +1,15 @@
-import { createContext, useContext, useReducer } from "react";
-import storeReducer, { initialValues } from "./storeReducer";
+import { ReactNode, createContext, useContext, useReducer } from "react";
+import VideoInterface from "../models/VideoInterface";
+import storeReducer from "./storeReducer";
 
 const StoreContext = createContext(null);
 
-const StoreProvider = ({ children, selectedVideo }) => {
+interface Props {
+  selectedVideo: VideoInterface;
+  children: ReactNode
+}
+
+const StoreProvider = ({ children, selectedVideo }: Props) => {
   return (
     <StoreContext.Provider value={useReducer(storeReducer, selectedVideo)}>
       {children}
@@ -14,5 +20,5 @@ const StoreProvider = ({ children, selectedVideo }) => {
 const useStore = () => useContext(StoreContext)[0];
 const useDispatch = () => useContext(StoreContext)[1];
 
-export { StoreContext, useStore, useDispatch };
+export { StoreContext, useDispatch, useStore };
 export default StoreProvider;

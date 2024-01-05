@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-import ReactPlayer from "react-player"
+import { IconBookmarkFilled, IconPlayerPauseFilled, IconPlayerPlayFilled } from "@tabler/icons-react";
+import ReactPlayer from "react-player";
+import format from "../helpers/durationFormat";
+import { updateMarks } from "../services/videosService";
 import { useDispatch, useStore } from "../store/ContextProvider";
 import { types } from "../store/storeReducer";
-import { updateMarks } from "../services/videosService";
-import VideoInterface from "../models/VideoInterface";
-import { VideoControls } from "./VideoControls";
-import { IconBookmarkFilled, IconPlayerPauseFilled, IconPlayerPlayFilled } from "@tabler/icons-react";
-import format from "../helpers/durationFormat";
 
 export const VideoPlayer = () => {
   const [playing, setPlaying] = useState(false);
